@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %} Formulario de notas {% endblock %}
+{% block content %}
+    <div class="container" id="dvEjercicio2">
+        <form id="formNombres" method="POST" action="/ejercicio2" novalidate>
+                <label for="nombre1">Nombre 1:</label>
+            <input type="text" id="nombre1" name="nombre1"
+                   required value="{{ datos_formulario['nombre1'] }}">
+            <br><br>
+            <label for="nombre2">Nombre 2:</label>
+            <input type="text" id="nombre2" name="nombre2"
+                   required value="{{ datos_formulario['nombre2'] }}">
+            <br><br>
+            <label for="nombre3">Nombre 3:</label>
+            <input type="text" id="nombre3" name="nombre3"
+                   required value="{{ datos_formulario['nombre3'] }}">
+            <br><br>
+            <input class="boton-form" type="submit" value="Enviar">
+        </form>
+        {%  if errores %}
+            <p id="msgError" style="color: red;">{{ errores }}</p>
+        {% endif %}
+
+        {% if resultado is not none %}
+            <p class="pEjercicio2">{{ resultado[0] }}</p>
+            <p class="pEjercicio2">{{ resultado[1] }}</p>
+        {% endif %}
+    </div>
+{% endblock %}
